@@ -1,21 +1,27 @@
-import { Carousel } from 'components/carousel';
-import { ThreeItemGrid } from 'components/grid/three-items';
-import Footer from 'components/layout/footer';
+import ColorPalette from "@/components/layout/ColorPalette";
+import { ScrollReveal } from "components/ScrollReveal";
+import WorkProcess from "components/WorkProcess";
+
 
 export const metadata = {
   description:
-    'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+    'Bevara identiteten, bär din historia.',
   openGraph: {
     type: 'website'
   }
 };
 
-export default function HomePage() {
+export default function Home() {
+
+
   return (
-    <>
-      <ThreeItemGrid />
-      <Carousel />
-      <Footer />
-    </>
-  );
+    <main>
+      <ScrollReveal>
+        <WorkProcess />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ColorPalette />
+      </ScrollReveal>
+    </main>
+  )
 }

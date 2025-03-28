@@ -1,11 +1,9 @@
-import CartModal from 'components/cart/modal';
-import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
-import Search, { SearchSkeleton } from './search';
 
 const { SITE_NAME } = process.env;
 
@@ -20,15 +18,19 @@ export async function Navbar() {
         </Suspense>
       </div>
       <div className="flex w-full items-center">
-        <div className="flex w-full md:w-1/3">
+        <div className="flex w-full justify-center">
           <Link
             href="/"
             prefetch={true}
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
-            <LogoSquare />
             <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
+              <Image
+                src="/images/kitmanlogo.png"
+                alt={SITE_NAME!}
+                width={150}
+                height={40}
+              />
             </div>
           </Link>
           {menu.length ? (
@@ -46,14 +48,6 @@ export async function Navbar() {
               ))}
             </ul>
           ) : null}
-        </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
-          </Suspense>
-        </div>
-        <div className="flex justify-end md:w-1/3">
-          <CartModal />
         </div>
       </div>
     </nav>
